@@ -8,4 +8,4 @@
 - What third party libraries/ external code snippets did you use, if any?
   - Axios
 - If you had more time, what would you have done differently?
-  - Definitely worked on modularity and testing along with styling. I got too caught up on optimal functionality. 
+  - Definitely work on modularity and testing along with styling by using styled-components and removing inline styling. 
