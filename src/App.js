@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function App() {
+const client = axios.create({
+  baseUrl: 'https://rickandmortyapi.com/api/character',
+});
+
+const App = () => {
+  const [character, setCharacter] = useState(null);
+
+  useEffect(() => {
+    const getCharacters = async () => {
+      const response = await client.get('/');
+      setCharacter(response.data);
+    };
+    console.log(getCharacters());
+    getCharacters();
+  }, []);
+
+  if (!character) return 'no characters available!';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <table>
+        <tr>
+          <th>Characters</th>
+        </tr>
+      </table>
     </div>
   );
-}
-
+};
 export default App;
